@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Today - Lent Log</title>
+  <meta name="description" content="Daily check-in for Lent commitments.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="app">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Lent Log home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Lent Log</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="is-active" href="app.html" aria-current="page">Today</a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="community.html">Feed</a></li>
+          <li><a href="setup.html">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-intro">
+      <p id="todayDateLabel" class="eyebrow"></p>
+      <h1 id="todayPhaseLabel">Today</h1>
+      <p id="todayStreakLabel" class="muted"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Log your lent days</h2>
+      <p class="muted">Open today&rsquo;s day or edit a prev day to check in. Future days unlock as they come.</p>
+      <div id="daySelectorGrid" class="day-selector-grid" aria-live="polite"></div>
+      <p id="daySelectorMessage" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="todayEditorPanel" class="panel is-hidden today-editor-panel">
+      <h2>Daily inspiration</h2>
+      <p id="dailyPromptText" class="lead-small"></p>
+      <div class="field">
+        <label class="checkbox-row" for="addInspirationToggle">
+          <input id="addInspirationToggle" type="checkbox">
+          <span>Add some inspo for others</span>
+        </label>
+        <p class="muted tiny">Tick to add a short encouragement line.</p>
+      </div>
+      <div id="inspirationFieldWrap" class="field is-hidden">
+        <label for="inspirationAdded">Your encouragement line</label>
+        <input id="inspirationAdded" type="text" maxlength="160" placeholder="Keep showing up. Quiet faithfulness compounds.">
+      </div>
+
+      <h2>Check-in</h2>
+      <div id="todayCommitments"></div>
+      <div class="field">
+        <label for="todayNote">Today note (optional)</label>
+        <textarea id="todayNote" rows="3" maxlength="400" placeholder="A small reflection from today..."></textarea>
+      </div>
+      <fieldset class="field">
+        <legend>Mood (optional)</legend>
+        <div id="moodSelector" class="mood-row" role="radiogroup" aria-label="Mood from 1 to 5"></div>
+      </fieldset>
+      <div class="button-row">
+        <button id="saveTodayBtn" class="primary" type="button">Save</button>
+      </div>
+      <p id="todaySaveMessage" class="status-message" role="status" aria-live="polite"></p>
+      <div id="todaySaveBar" class="save-progress" aria-hidden="true"></div>
+    </section>
+    <p class="legal-links"><a href="terms.html">Terms</a><span>·</span><a href="privacy.html">Privacy</a><span>·</span><a href="faq.html">FAQ</a></p>
+  </main>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/auth.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

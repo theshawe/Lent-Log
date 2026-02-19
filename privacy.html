@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy - Lent Log</title>
+  <meta name="description" content="Privacy policy for Lent Log.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Lent Log home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Lent Log</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="app.html">Today</a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="community.html">Feed</a></li>
+          <li><a href="setup.html">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container legal-doc">
+    <section class="page-intro">
+      <h1>Privacy Policy</h1>
+      <p>Last updated: 19 February 2026</p>
+    </section>
+
+    <section class="panel">
+      <h2>Overview</h2>
+      <p>This policy explains what data Lent Log processes, where it is stored, and how shared content appears in the public feed.</p>
+    </section>
+
+    <section class="panel">
+      <h2>What We Collect</h2>
+      <ul>
+        <li>Account data: email address and authentication identifiers via Supabase Auth.</li>
+        <li>Profile data: display name, avatar selection, tone preference, sharing preference.</li>
+        <li>Check-in data: day logs, missed notes, note text, encouragement line, mood.</li>
+        <li>Community data: feed posts, supports/upvotes, thread comments/replies, and saved encouragement notes.</li>
+        <li>Technical data: local storage entries required for app/session/queue state.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Technology Stack and Data Locations</h2>
+      <ul>
+        <li>Client app: static HTML/CSS/JavaScript.</li>
+        <li>Local device storage (browser <code>localStorage</code>) includes:
+          <ul>
+            <li><code>lent_tracker_v1</code> (and per-user variants) for local app data.</li>
+            <li><code>lent_supabase_session_v1</code> for auth session state.</li>
+            <li><code>lent_supabase_config_v1</code> for public Supabase project config.</li>
+            <li><code>lent_remote_queue_v1</code> for queued offline sync operations.</li>
+          </ul>
+        </li>
+        <li>Remote storage: Supabase Postgres tables for profiles, check-ins, feed posts, supports, comments/replies, and abuse reports.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>How Data Is Used</h2>
+      <ul>
+        <li>To run daily check-ins, streaks, progress metrics, and reminders.</li>
+        <li>To authenticate your account and sync your data across sessions/devices.</li>
+        <li>To publish community feed content when you share updates and when you post support content/comments in the feed.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>Public vs Private Data</h2>
+      <p>Feed posts are visible to other users. Thread comments/replies on public posts are also visible to other users.</p>
+      <p>Daily logs are public only when sharing is enabled. Support posts are public when posted while signed in. Do not submit sensitive personal information in any public field.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Retention and Deletion</h2>
+      <p>You can edit or remove local content in-app. Deleting browser storage or using logout/session reset can remove local data from your device.</p>
+      <p>For remote data deletion requests, contact the site operator at: <code>info@lentlog.com</code>.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Security</h2>
+      <p>Reasonable safeguards are used, but no online system can guarantee absolute security. You are responsible for securing your own device and email account.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Children</h2>
+      <p>This app is not intended for children under the age required by your local data protection laws.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Policy Changes</h2>
+      <p>We may update this policy over time. The “Last updated” date reflects the current version.</p>
+    </section>
+
+    <p class="legal-links"><a href="terms.html">Terms of Use</a><span>·</span><a href="faq.html">FAQ</a></p>
+  </main>
+</body>
+</html>

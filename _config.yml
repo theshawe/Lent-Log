@@ -1,0 +1,8 @@
+title: Lent Log
+description: Track your life during lent.
+baseurl: ""
+url: ""
+markdown: kramdown
+exclude:
+  - .jekyll-cache
+  - _site

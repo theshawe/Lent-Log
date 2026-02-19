@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile - Lent Log</title>
+  <meta name="description" content="Manage your Lent profile, commitments, and backup options.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="setup">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Lent Log home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Lent Log</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="app.html">Today</a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="community.html">Feed</a></li>
+          <li><a class="is-active" href="setup.html" aria-current="page">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-intro">
+      <h1>Your profile</h1>
+      <p>Simple by default. Editable when you want to refine it.</p>
+    </section>
+
+    <section id="profileViewPanel" class="panel">
+      <div class="profile-header">
+        <div class="profile-header-main">
+          <div id="profileAvatarView" class="profile-avatar">
+            <button id="editAvatarQuickBtn" type="button" class="avatar-edit-btn" aria-label="Edit profile picture">Edit</button>
+          </div>
+          <div>
+            <h2 id="profileDisplayNameView">Anonymous pilgrim</h2>
+            <p id="profileHandleView" class="muted">@lent</p>
+          </div>
+        </div>
+        <button id="openEditProfileBtn" type="button">Edit profile</button>
+      </div>
+      <div class="grid-3">
+        <article class="metric-card">
+          <p class="metric-label">Streak</p>
+          <p id="profileStreakView" class="metric-value">0</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">Completion</p>
+          <p id="profileCompletionView" class="metric-value">0%</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-label">Check-ins</p>
+          <p id="profileCheckinsView" class="metric-value">0</p>
+        </article>
+      </div>
+      <p id="profileSummaryView" class="muted"></p>
+      <ul id="profileCommitmentsPreview" class="item-list"></ul>
+      <div class="button-row profile-logging-actions">
+        <button id="profileUpdateLoggingBtn" type="button">Update what I log</button>
+        <button id="profileAddMoreBtn" type="button">Add more</button>
+      </div>
+    </section>
+    <div id="profileEditView" class="is-hidden">
+      <section class="panel">
+        <h2>Edit profile</h2>
+        <div class="field">
+          <label for="displayName">Display name (optional)</label>
+          <input id="displayName" name="displayName" type="text" maxlength="40" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label>Profile picture</label>
+          <div id="avatarPicker" class="avatar-picker" role="radiogroup" aria-label="Choose profile avatar"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Intent</h2>
+        <p class="muted">Set the tone of your daily prompts and choose whether your check-ins appear in the public feed.</p>
+        <div class="field">
+          <label for="toneSelect">Tone</label>
+          <select id="toneSelect" name="toneSelect">
+            <option value="neutral">Neutral</option>
+            <option value="spiritual">Spiritual</option>
+            <option value="discipline">Discipline</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Lent / Date</label>
+          <p id="lentDateRange" class="lead-small"></p>
+          <p class="muted tiny">Dates are set automatically to Ash Wednesday through Holy Thursday.</p>
+        </div>
+
+        <div class="field">
+          <label class="checkbox-row" for="shareLogsToggle">
+            <input id="shareLogsToggle" name="shareLogsToggle" type="checkbox">
+            <span>Share my daily log with community board</span>
+          </label>
+          <p class="muted tiny">When enabled, your daily check-ins are public in the feed. Support posts and thread comments/replies are public when posted while signed in.</p>
+        </div>
+      </section>
+
+      <section id="notDoingSection" class="panel">
+        <h2>What I&rsquo;m giving up</h2>
+        <p class="tiny muted commitment-helper">Add one item at a time. Keep it simple and specific.</p>
+        <form id="addNotDoingForm" class="inline-form">
+          <label class="sr-only" for="notDoingInput">Add a not doing commitment</label>
+          <input id="notDoingInput" type="text" maxlength="80" placeholder="No doomscrolling">
+          <button type="submit">Add</button>
+        </form>
+        <div id="notDoingSuggestionsWrap" class="commitment-suggestions is-hidden">
+          <p class="tiny muted">See what other ppl are doing</p>
+          <div id="notDoingSuggestions" class="suggestion-chip-row" aria-live="polite"></div>
+        </div>
+        <p id="notDoingFormMessage" class="status-message" role="status" aria-live="polite"></p>
+        <p id="notDoingCount" class="tiny muted commitment-count"></p>
+        <ul id="notDoingList" class="item-list" aria-live="polite"></ul>
+      </section>
+
+      <section id="doingSection" class="panel">
+        <h2>What I&rsquo;m starting</h2>
+        <p class="tiny muted commitment-helper">Add one item at a time. Keep it practical for daily life.</p>
+        <form id="addDoingForm" class="inline-form">
+          <label class="sr-only" for="doingInput">Add a doing commitment</label>
+          <input id="doingInput" type="text" maxlength="80" placeholder="10 minutes of prayer">
+          <button type="submit">Add</button>
+        </form>
+        <div id="doingSuggestionsWrap" class="commitment-suggestions is-hidden">
+          <p class="tiny muted">See what other ppl are doing</p>
+          <div id="doingSuggestions" class="suggestion-chip-row" aria-live="polite"></div>
+        </div>
+        <p id="doingFormMessage" class="status-message" role="status" aria-live="polite"></p>
+        <p id="doingCount" class="tiny muted commitment-count"></p>
+        <ul id="doingList" class="item-list" aria-live="polite"></ul>
+      </section>
+
+      <div class="sticky-actions">
+        <button id="saveSetupBtn" class="primary" type="button">Save</button>
+      </div>
+      <p id="setupMessage" class="status-message" role="status" aria-live="polite"></p>
+    </div>
+    <p class="legal-links"><a href="terms.html">Terms</a><span>·</span><a href="privacy.html">Privacy</a><span>·</span><a href="faq.html">FAQ</a></p>
+  </main>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/auth.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

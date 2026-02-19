@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Public Feed - Lent Log</title>
+  <meta name="description" content="Public feed of shared Lent check-ins and encouragement.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="community">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Lent Log home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Lent Log</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="app.html">Today</a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a class="is-active" href="community.html" aria-current="page">Feed</a></li>
+          <li><a href="setup.html">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-intro">
+      <h1>Public feed</h1>
+      <p>Check-ins, support posts, and thread comments from the community.</p>
+    </section>
+
+    <section class="feed-main-list">
+      <ul id="communityBoardList" class="item-list"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Add a post of support</h2>
+      <form id="communityNoteForm">
+        <div class="field">
+          <label for="communityText">Your post</label>
+          <textarea id="communityText" rows="3" maxlength="200" placeholder="Share a short encouragement with the community."></textarea>
+        </div>
+        <div class="field">
+          <label for="communityTags">Tags (comma separated)</label>
+          <input id="communityTags" type="text" maxlength="80" placeholder="discipline, prayer">
+        </div>
+        <button type="submit">Post to feed</button>
+      </form>
+      <p id="communitySaveMessage" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Saved encouragement notes</h2>
+      <ul id="communityNotesList" class="item-list"></ul>
+    </section>
+    <p class="legal-links"><a href="terms.html">Terms</a><span>·</span><a href="privacy.html">Privacy</a><span>·</span><a href="faq.html">FAQ</a></p>
+  </main>
+
+  <dialog id="feedPostModal" class="modal">
+    <form method="dialog">
+      <div class="modal-head">
+        <h2 id="feedPostModalTitle">Post thread</h2>
+        <button type="button" id="feedPostModalCloseBtn" class="ghost">Close</button>
+      </div>
+      <div id="feedPostModalBody"></div>
+    </form>
+  </dialog>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/auth.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

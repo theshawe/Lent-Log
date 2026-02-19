@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lent Log</title>
+  <meta name="description" content="Track your life during lent.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="index">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Lent Log home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Lent Log</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="app.html">Today</a></li>
+          <li><a href="progress.html">Progress</a></li>
+          <li><a href="community.html">Feed</a></li>
+          <li><a href="setup.html">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">Lent Log</p>
+      <h1>Track your life during lent.</h1>
+      <p class="lead">A calm daily rhythm for Lent.</p>
+      <p id="indexCommunityInfo" class="muted tiny"></p>
+      <p class="muted tiny"><a id="indexCommunityPostsInfo" href="community.html" class="text-link"></a></p>
+      <div id="indexPrimaryCta"></div>
+      <div id="indexSecondaryInfo" class="subtle-block"></div>
+    </section>
+    <p class="legal-links"><a href="terms.html">Terms</a><span>·</span><a href="privacy.html">Privacy</a><span>·</span><a href="faq.html">FAQ</a></p>
+  </main>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/auth.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

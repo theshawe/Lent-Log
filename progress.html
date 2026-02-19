@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Progress - Lent Log</title>
+  <meta name="description" content="Track streaks and recent check-ins for Lent.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="progress">
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html" aria-label="Lent Log home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Lent Log</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="app.html">Today</a></li>
+          <li><a class="is-active" href="progress.html" aria-current="page">Progress</a></li>
+          <li><a href="community.html">Feed</a></li>
+          <li><a href="setup.html">Profile</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-intro">
+      <h1>Your progress</h1>
+      <p>Steady, simple, consistent.</p>
+    </section>
+
+    <section class="grid-4">
+      <article class="metric-card">
+        <p class="metric-label">Current streak</p>
+        <p id="metricStreak" class="metric-value">0</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label">Commitment completion</p>
+        <p id="metricCompletion" class="metric-value">0%</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label">Check-ins saved</p>
+        <p id="metricCheckins" class="metric-value">0</p>
+      </article>
+      <article class="metric-card">
+        <p class="metric-label">Days logged</p>
+        <p id="metricDaysLogged" class="metric-value">0</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>40 days of Lent</h2>
+      <p class="muted">Starting from Lent day one. Logged days are highlighted.</p>
+      <div id="last30Grid" class="dots-grid" aria-live="polite"></div>
+    </section>
+    <p class="legal-links"><a href="terms.html">Terms</a><span>·</span><a href="privacy.html">Privacy</a><span>·</span><a href="faq.html">FAQ</a></p>
+  </main>
+
+  <dialog id="dayModal" class="modal">
+    <form id="dayModalForm" method="dialog">
+      <div class="modal-head">
+        <h2 id="dayModalTitle">Day details</h2>
+        <button type="button" id="dayModalCloseBtn" class="ghost">Close</button>
+      </div>
+      <div id="dayModalBody"></div>
+      <div class="modal-actions">
+        <button type="button" id="dayModalSaveBtn" class="primary">Save changes</button>
+      </div>
+      <p id="dayModalMessage" class="status-message" role="status" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/auth.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

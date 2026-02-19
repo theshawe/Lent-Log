@@ -18,7 +18,8 @@ jobs:
           server: iad1-shared-e1-27.dreamhost.com
           username: ${{ secrets.DREAMHOST_USERNAME }}
           password: ${{ secrets.DREAMHOST_PASSWORD }}
-          protocol: ftps
+          protocol: ftp
+          port: 21
           local-dir: ./
           server-dir: ${{ secrets.DREAMHOST_PATH }}
           exclude: |

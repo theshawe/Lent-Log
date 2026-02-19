@@ -15,7 +15,7 @@ jobs:
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.DREAMHOST_SERVER }}
+          server: iad1-shared-e1-27.dreamhost.com
           username: ${{ secrets.DREAMHOST_USERNAME }}
           password: ${{ secrets.DREAMHOST_PASSWORD }}
           protocol: ftps

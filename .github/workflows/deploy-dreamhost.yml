@@ -12,22 +12,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via SFTP (SCP over SSH)
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: iad1-shared-e1-27.dreamhost.com
+          host: iad1-shared-e1-27.dreamhost.com
+          port: 22
           username: ${{ secrets.DREAMHOST_USERNAME }}
           password: ${{ secrets.DREAMHOST_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./
-          server-dir: ${{ secrets.DREAMHOST_PATH }}
-          exclude: |
-            **/.git*
-            **/.github/**
-            **/docs/**
-            **/supabase/**
-            **/README.md
-            **/.cursor/**
-            **/node_modules/**
-            **/_site/**
+          source: "index.html,app.html,progress.html,community.html,setup.html,terms.html,privacy.html,faq.html,assets"
+          target: ${{ secrets.DREAMHOST_PATH }}
+          overwrite: true

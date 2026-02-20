@@ -12,13 +12,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy via SFTP (SCP over SSH)
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: iad1-shared-e1-27.dreamhost.com
-          port: 22
-          username: ${{ secrets.DREAMHOST_USERNAME }}
-          password: ${{ secrets.DREAMHOST_PASSWORD }}
-          source: "index.html,app.html,progress.html,community.html,setup.html,terms.html,privacy.html,faq.html,assets"
-          target: ${{ secrets.DREAMHOST_PATH }}
-          overwrite: true
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy via SFTP mirror
+        env:
+          DREAMHOST_SERVER: iad1-shared-e1-27.dreamhost.com
+          DREAMHOST_USERNAME: ${{ secrets.DREAMHOST_USERNAME }}
+          DREAMHOST_PASSWORD: ${{ secrets.DREAMHOST_PASSWORD }}
+          DREAMHOST_PATH: ${{ secrets.DREAMHOST_PATH }}
+        run: |
+          lftp -c "
+          set sftp:auto-confirm yes;
+          set ssl:verify-certificate no;
+          open -u ${DREAMHOST_USERNAME},${DREAMHOST_PASSWORD} sftp://${DREAMHOST_SERVER};
+          mirror -R ./ ${DREAMHOST_PATH} \
+            --verbose \
+            --delete \
+            --exclude-glob .git* \
+            --exclude-glob .github \
+            --exclude-glob docs \
+            --exclude-glob supabase \
+            --exclude-glob README.md \
+            --exclude-glob .cursor \
+            --exclude-glob node_modules \
+            --exclude-glob _site;
+          bye
+          "
